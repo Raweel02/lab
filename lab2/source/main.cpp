@@ -1,16 +1,14 @@
 #define GLM_ENABLE_EXPERIMENTAL
 #include <iostream>
 #include <glm/glm.hpp>
-#include <glm/gtc/constants.hpp>
-
-const double DEREES_TO_RADIANS = glm::pi<float>() / 180.0;
-const double RADIANS_TO_DEGREES = 180.0 / glm::pi<float>();
+#include <glm/gtx/string_cast.hpp>
 
 int main()
 {
-	glm::vec3 v(2, -1, 1);
-	glm::vec3 u(1, 1, 2);
-	float rad = glm::acos(glm::dot(v, u) / (glm::length(u)*glm::length(v)));
-	std::cout << rad * RADIANS_TO_DEGREES << std::endl;
+	glm::vec3 v(1, 2, -1);
+	glm::vec3 c(0, 1, 0);
+	glm::vec3 b = c * glm::dot(v, c);
+	glm::vec3 a = v - b;
+	std::cout << "a = " << glm::to_string(a) << std::endl << "b = " << glm::to_string(b) << std::endl;
 	return 0;
 }
